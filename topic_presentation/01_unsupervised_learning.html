@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Luke Roy">
 
-<title>Untitled</title>
+<title>Unsupervised Learning: A Data Science Lens</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -37,21 +38,28 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="fullcontent">
+<body>
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="01_unsupervised_learning.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></div>
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Untitled</h1>
+<h1 class="title">Unsupervised Learning: A Data Science Lens</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Luke Roy </p>
+          </div>
+  </div>
     
   
     
@@ -62,8 +70,145 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="testing-123" class="level1">
-<h1>Testing 123</h1>
+<section id="welcome" class="level2">
+<h2 class="anchored" data-anchor-id="welcome">🎬 Welcome</h2>
+<section id="unsupervised-learning-a-data-science-lens" class="level3">
+<h3 class="anchored" data-anchor-id="unsupervised-learning-a-data-science-lens">Unsupervised Learning: A Data Science Lens</h3>
+<p><strong>Luke Roy</strong><br>
+<strong>STAT 4915 Capstone Presentation</strong></p>
+<hr>
+</section>
+</section>
+<section id="what-is-unsupervised-learning" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-unsupervised-learning">🧠 What is Unsupervised Learning?</h2>
+<ul>
+<li>No labeled outcomes</li>
+<li>Goal: discover hidden structure in data</li>
+<li>Contrast with supervised learning</li>
+<li>Common categories:
+<ul>
+<li>Clustering</li>
+<li>Dimensionality Reduction</li>
+<li>Anomaly Detection</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="why-does-this-matter" class="level2">
+<h2 class="anchored" data-anchor-id="why-does-this-matter">📦 Why Does This Matter?</h2>
+<ul>
+<li>Many real-world datasets have no labels</li>
+<li>Enables <strong>exploratory analysis</strong>, <strong>segmentation</strong>, <strong>feature learning</strong></li>
+<li>Widely used in:
+<ul>
+<li>NLP (e.g., topic modeling)</li>
+<li>Finance (e.g., fraud detection)</li>
+<li>Biology (e.g., gene expression patterns)</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="clustering-methods" class="level2">
+<h2 class="anchored" data-anchor-id="clustering-methods">🧰 Clustering Methods</h2>
+<section id="common-approaches" class="level3">
+<h3 class="anchored" data-anchor-id="common-approaches">Common approaches:</h3>
+<ul>
+<li><strong>K-Means</strong></li>
+<li><strong>Hierarchical Clustering</strong></li>
+<li><strong>DBSCAN</strong></li>
+<li><strong>Gaussian Mixture Models</strong></li>
+</ul>
+<p>💡 Use case: Segmenting customers, market analysis</p>
+<hr>
+</section>
+</section>
+<section id="dimensionality-reduction" class="level2">
+<h2 class="anchored" data-anchor-id="dimensionality-reduction">📉 Dimensionality Reduction</h2>
+<section id="common-methods" class="level3">
+<h3 class="anchored" data-anchor-id="common-methods">Common methods:</h3>
+<ul>
+<li><strong>PCA (Principal Component Analysis)</strong></li>
+<li><strong>t-SNE</strong></li>
+<li><strong>UMAP</strong></li>
+</ul>
+<p>Used for: - Visualization of high-dimensional data - Noise reduction - Feature extraction</p>
+<hr>
+</section>
+</section>
+<section id="how-do-we-evaluate-unsupervised-models" class="level2">
+<h2 class="anchored" data-anchor-id="how-do-we-evaluate-unsupervised-models">🧪 How Do We Evaluate Unsupervised Models?</h2>
+<ul>
+<li>No ground truth = no accuracy score</li>
+<li>Strategies:
+<ul>
+<li><strong>Silhouette score</strong> (clustering)</li>
+<li><strong>Davies–Bouldin index</strong></li>
+<li><strong>Reconstruction error</strong> (autoencoders)</li>
+<li><strong>Visual inspection</strong> (plots like t-SNE)</li>
+<li><strong>Stability/consistency checks</strong></li>
+<li><strong>Domain knowledge</strong></li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="benchmarking-approaches" class="level2">
+<h2 class="anchored" data-anchor-id="benchmarking-approaches">🔬 Benchmarking Approaches</h2>
+<ul>
+<li>Use synthetic datasets (e.g., <code>make_blobs</code>)</li>
+<li>Compare algorithm performance:
+<ul>
+<li>Runtime</li>
+<li>Interpretability</li>
+<li>Scalability</li>
+</ul></li>
+<li>Try multiple techniques on same data</li>
+</ul>
+<hr>
+</section>
+<section id="connecting-to-research-projects" class="level2">
+<h2 class="anchored" data-anchor-id="connecting-to-research-projects">🧭 Connecting to Research Projects</h2>
+<p>You could use unsupervised learning to:</p>
+<ul>
+<li><strong>Cluster firms</strong> based on financial statements</li>
+<li><strong>Detect anomalies</strong> in SEC filings</li>
+<li><strong>Reduce dimensions</strong> in time series data</li>
+</ul>
+<p>(But this talk is <em>not</em> about your final project — it’s setting the stage!)</p>
+<hr>
+</section>
+<section id="real-world-example-nyt-word-embeddings" class="level2">
+<h2 class="anchored" data-anchor-id="real-world-example-nyt-word-embeddings">🔍 Real-World Example: NYT Word Embeddings</h2>
+<ul>
+<li>t-SNE on New York Times articles</li>
+<li>Shows how articles with similar topics cluster</li>
+<li>Unlabeled → labeled using cluster insights</li>
+</ul>
+<hr>
+</section>
+<section id="common-pitfalls" class="level2">
+<h2 class="anchored" data-anchor-id="common-pitfalls">🤔 Common Pitfalls</h2>
+<ul>
+<li>Overinterpreting noisy clusters</li>
+<li>Using clustering when not appropriate</li>
+<li>Forgetting to scale your data!</li>
+<li>Assuming structure where none exists</li>
+</ul>
+<hr>
+</section>
+<section id="questions" class="level2">
+<h2 class="anchored" data-anchor-id="questions">💬 Questions?</h2>
+<ul>
+<li>What part of this was surprising?</li>
+<li>Which method do you want to try first?</li>
+<li>How might this connect to your project?</li>
+</ul>
+<hr>
+</section>
+<section id="thanks" class="level2">
+<h2 class="anchored" data-anchor-id="thanks">🙏 Thanks!</h2>
+<p>You can find this presentation on GitHub:<br>
+🔗 <code>github.com/lukeroy007/stat4915</code></p>
+<p>Happy clustering 😄</p>
 </section>
 
 </main>
