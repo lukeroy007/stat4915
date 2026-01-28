@@ -1,0 +1,142 @@
+---
+title: "Unsupervised Learning: A Data Science Lens"
+author: "Luke Roy"
+format: 
+  revealjs:
+    theme: solarized
+    slide-number: true
+    toc: true
+    transition: fade
+    chalkboard: true
+    logo: images/logo.png  # optional
+execute: 
+  echo: true
+  warning: false
+---
+
+## 🎬 Welcome
+
+### Unsupervised Learning: A Data Science Lens  
+**Luke Roy**  
+**STAT 4915 Capstone Presentation**
+
+---
+
+## 🧠 What is Unsupervised Learning?
+
+- No labeled outcomes
+- Goal: discover hidden structure in data
+- Contrast with supervised learning
+- Common categories:
+  - Clustering
+  - Dimensionality Reduction
+  - Anomaly Detection
+
+---
+
+## 📦 Why Does This Matter?
+
+- Many real-world datasets have no labels
+- Enables **exploratory analysis**, **segmentation**, **feature learning**
+- Widely used in:
+  - NLP (e.g., topic modeling)
+  - Finance (e.g., fraud detection)
+  - Biology (e.g., gene expression patterns)
+
+---
+
+## 🧰 Clustering Methods
+
+### Common approaches:
+- **K-Means**
+- **Hierarchical Clustering**
+- **DBSCAN**
+- **Gaussian Mixture Models**
+
+💡 Use case: Segmenting customers, market analysis
+
+---
+
+## 📉 Dimensionality Reduction
+
+### Common methods:
+- **PCA (Principal Component Analysis)**
+- **t-SNE**
+- **UMAP**
+
+Used for:
+- Visualization of high-dimensional data
+- Noise reduction
+- Feature extraction
+
+---
+
+## 🧪 How Do We Evaluate Unsupervised Models?
+
+- No ground truth = no accuracy score
+- Strategies:
+  - **Silhouette score** (clustering)
+  - **Davies–Bouldin index**
+  - **Reconstruction error** (autoencoders)
+  - **Visual inspection** (plots like t-SNE)
+  - **Stability/consistency checks**
+  - **Domain knowledge**
+
+---
+
+## 🔬 Benchmarking Approaches
+
+- Use synthetic datasets (e.g., `make_blobs`)
+- Compare algorithm performance:
+  - Runtime
+  - Interpretability
+  - Scalability
+- Try multiple techniques on same data
+
+---
+
+## 🧭 Connecting to Research Projects
+
+You could use unsupervised learning to:
+
+- **Cluster firms** based on financial statements
+- **Detect anomalies** in SEC filings
+- **Reduce dimensions** in time series data
+
+(But this talk is *not* about your final project — it's setting the stage!)
+
+---
+
+## 🔍 Real-World Example: NYT Word Embeddings
+
+- t-SNE on New York Times articles
+- Shows how articles with similar topics cluster
+- Unlabeled → labeled using cluster insights
+
+---
+
+## 🤔 Common Pitfalls
+
+- Overinterpreting noisy clusters
+- Using clustering when not appropriate
+- Forgetting to scale your data!
+- Assuming structure where none exists
+
+---
+
+## 💬 Questions?
+
+- What part of this was surprising?
+- Which method do you want to try first?
+- How might this connect to your project?
+
+---
+
+## 🙏 Thanks!
+
+You can find this presentation on GitHub:  
+🔗 `github.com/lukeroy007/stat4915`
+
+Happy clustering 😄
+
+testing 123 
