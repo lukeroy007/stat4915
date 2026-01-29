@@ -22,15 +22,43 @@ execute:
 
 ---
 
-## 🧠 What is Unsupervised Learning?
+## Where Does Data Science Usually Begin?
 
-- No labeled outcomes
-- Goal: discover hidden structure in data
-- Contrast with supervised learning
-- Common categories:
-  - Clustering
-  - Dimensionality Reduction
-  - Anomaly Detection
+In practice:
+
+- Data arrives **without labels**
+- We don't yet know what patterns matter or why they matter
+- The first task is understanding the structure of the data
+
+Unsupervised learning is often the **first step**, not the last.
+
+---
+
+
+
+## What Is Unsupervised Learning Continued
+
+Unsupervised learning refers to methods that:
+
+- Work with **unlabeled data** (no outcome variable)
+- Aim to **discover hidden structure**
+- Emphasize exploration over prediction
+
+The goal is understanding, not accuracy.
+
+---
+
+## Unsupervised vs. Supervised Learning
+
+**Supervised learning:**
+- Known labels
+- Goal: predict outcomes
+- Performance measured by accuracy or error
+
+**Unsupervised learning:**
+- No labels
+- Goal: uncover structure
+- Performance judged by usefulness and insight
 
 ---
 
@@ -44,6 +72,19 @@ execute:
   - Biology (e.g., gene expression patterns)
 
 ---
+
+## Common Unsupervised Learning Tasks
+
+Unsupervised learning is often used for:
+
+- **Clustering**  
+  Grouping similar observations
+
+- **Dimensionality Reduction**  
+  Compressing data while preserving structure
+
+- **Anomaly Detection**  
+  Identifying unusual or rare patterns
 
 ## 🧰 Clustering Methods
 
