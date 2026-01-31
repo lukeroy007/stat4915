@@ -18,7 +18,7 @@ execute:
 
 ### Unsupervised Learning: A Data Science Lens  
 **Luke Roy**  
-**STAT 4915 Capstone Presentation**
+**STAT 4915 Topic Presentation**
 
 ---
 
@@ -85,6 +85,20 @@ Unsupervised learning is often used for:
 
 - **Anomaly Detection**  
   Identifying unusual or rare patterns
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## 🧰 Clustering Methods
 
@@ -180,4 +194,4 @@ You can find this presentation on GitHub:
 
 Happy clustering 😄
 
-testing 12345
+testing 123456
