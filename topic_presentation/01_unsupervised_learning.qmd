@@ -8,7 +8,7 @@ format:
     toc: true
     transition: fade
     chalkboard: true
-    logo: images/logo.png  # optional
+     
 execute: 
   echo: true
   warning: false
@@ -30,13 +30,13 @@ In practice:
 - We don't yet know what patterns matter or why they matter
 - The first task is understanding the structure of the data
 
-Unsupervised learning is often the **first step**, not the last.
+- For common data challenges like these, data scientists use unsupervised learning
 
 ---
 
 
 
-## What Is Unsupervised Learning Continued
+## What Is Unsupervised Learning?
 
 Unsupervised learning refers to methods that:
 
@@ -53,25 +53,15 @@ The goal is understanding, not accuracy.
 **Supervised learning:**
 - Known labels
 - Goal: predict outcomes
-- Performance measured by accuracy or error
+- Performance measured quantitatively by accuracy or error
 
 **Unsupervised learning:**
 - No labels
 - Goal: uncover structure
-- Performance judged by usefulness and insight
+- Performance judged by qualitative factors like usefulness and insight
 
 ---
 
-## 📦 Why Does This Matter?
-
-- Many real-world datasets have no labels
-- Enables **exploratory analysis**, **segmentation**, **feature learning**
-- Widely used in:
-  - NLP (e.g., topic modeling)
-  - Finance (e.g., fraud detection)
-  - Biology (e.g., gene expression patterns)
-
----
 
 ## Common Unsupervised Learning Tasks
 
@@ -86,104 +76,773 @@ Unsupervised learning is often used for:
 - **Anomaly Detection**  
   Identifying unusual or rare patterns
 
+---
+
+## Why Not Just Use Supervised Learning?
+
+In many settings:
+
+- Labels are expensive or subjective
+- Ground truth may not exist
+- Patterns evolve over time
+
+Unsupervised learning lets us explore **before** committing to a model.
+
+---
+
+## What Does Unsupervised Learning Enable?
+
+It allows data scientists to:
+
+- Explore large, complex datasets
+- Discover latent groupings or regimes
+- Learn useful representations of data
+- Generate hypotheses for further analysis
+
+---
+
+
+## Where Is Unsupervised Learning Used?
+
+Common applications include:
+
+- **Natural Language Processing**  
+  Topic modeling, word embeddings
+
+- **Finance**  
+  Fraud detection, anomaly detection, segmentation
+
+- **Biology**  
+  Gene expression and cell-type discovery
+
+
+---
+
+## What Comes Next?
+
+In the rest of this talk, we’ll focus on:
+
+- Clustering and dimensionality reduction
+- How we evaluate unsupervised models
+- Why these methods matter for data science projects
 
 
 
+---
+
+## 🧰 Clustering: The Core Idea
+
+Clustering is the task of:
+
+- Grouping observations based on **similarity**
+- Maximizing similarity *within* groups
+- Minimizing similarity *between* groups
+
+
+## Why is Clustering Useful?
+
+- Clustering is useful if we believe there are **different types of behavior** in our data
+- Clustering Algorithms can discover these differences and help analysts classify appropriately
+
+---
+
+## 🧠 Intuition Behind Clustering
+
+At a high level, clustering asks:
+
+- Which observations look alike?
+- Are there natural groupings in the data?
+- Do these groupings tell a useful story?
+
+Clustering is exploratory, not definitive.
+
+---
+
+```{python}
+#| echo: false
+#| fig-show: false
+
+import matplotlib.pyplot as plt
+from sklearn.datasets import make_blobs
+
+X, _ = make_blobs(
+    n_samples=300,
+    centers=3,
+    cluster_std=[0.8, 1.2, 1.2],
+    random_state=42
+)
+
+plt.figure(figsize=(6, 4))
+plt.scatter(X[:, 0], X[:, 1], s=30)
+plt.title("Visual Structure in Low Dimensions")
+plt.xlabel("Feature 1")
+plt.ylabel("Feature 2")
+
+plt.savefig("images/seeing_clusters.png", dpi=200, bbox_inches="tight")
+plt.close()
 
 
 
+```
+
+## Seeing Clusters
+
+::: columns
+::: {.column width="60%"}
+![](images/seeing_clusters.png){width=100%}
+:::
+
+::: {.column width="40%"}
+- Points close together form groups
+- Separation suggests structure
+- Overlap suggests ambiguity
+
+:::
+:::
+
+**In high dimensions, structure is harder to see directly.**
+
+---
+
+## Common Clustering Approaches
+
+Some widely used methods include:
+
+- **K-Means**  
+  Fast, simple, assumes roughly spherical clusters
+
+- **Hierarchical Clustering**  
+  Builds a tree of cluster relationships
+
+- **DBSCAN**  
+  Density-based, can identify outliers
+
+- **Gaussian Mixture Models**  
+  Probabilistic clusters with uncertainty
+
+---
+
+## Why Are There So Many Clustering Methods?
+
+Different datasets have different structures:
+
+- Shape of clusters
+- Density of points
+- Presence of noise or outliers
+
+No single clustering algorithm works best in all cases.
 
 
 
+## How Do We Choose a Clustering Method?
+
+The choice depends on:
+
+- Data shape and scale
+- Presence of noise or outliers
+- Interpretability needs
+- Computational constraints
+
+Clustering is as much art as science.
 
 
 
+## An Important Caveat
+
+Clusters are not guaranteed to be:
+
+- Unique
+- Stable
+- Meaningful
+
+Clustering reveals structure but isn't automatic proof
 
 
-## 🧰 Clustering Methods
 
-### Common approaches:
-- **K-Means**
-- **Hierarchical Clustering**
-- **DBSCAN**
-- **Gaussian Mixture Models**
-
-💡 Use case: Segmenting customers, market analysis
 
 ---
 
 ## 📉 Dimensionality Reduction
 
-### Common methods:
-- **PCA (Principal Component Analysis)**
-- **t-SNE**
-- **UMAP**
+Modern datasets often have:
 
-Used for:
-- Visualization of high-dimensional data
-- Noise reduction
-- Feature extraction
+- Hundreds or thousands of features
+- Complex correlations between variables
+- Structure that is difficult to visualize or interpret
 
----
+In high dimensions, intuition breaks down.
 
-## 🧪 How Do We Evaluate Unsupervised Models?
-
-- No ground truth = no accuracy score
-- Strategies:
-  - **Silhouette score** (clustering)
-  - **Davies–Bouldin index**
-  - **Reconstruction error** (autoencoders)
-  - **Visual inspection** (plots like t-SNE)
-  - **Stability/consistency checks**
-  - **Domain knowledge**
 
 ---
 
-## 🔬 Benchmarking Approaches
 
-- Use synthetic datasets (e.g., `make_blobs`)
-- Compare algorithm performance:
-  - Runtime
-  - Interpretability
-  - Scalability
-- Try multiple techniques on same data
+## Why Dimensionality Reduction Matters
 
----
+Dimensionality reduction helps us:
 
-## 🧭 Connecting to Research Projects
+- Visualize complex datasets
+- Improve clustering performance
+- Reduce noise and redundancy
+- Make patterns easier to interpret
 
-You could use unsupervised learning to:
-
-- **Cluster firms** based on financial statements
-- **Detect anomalies** in SEC filings
-- **Reduce dimensions** in time series data
-
-(But this talk is *not* about your final project — it's setting the stage!)
+It is often used *before* or *alongside* clustering.
 
 ---
 
-## 🔍 Real-World Example: NYT Word Embeddings
+```{python}
 
-- t-SNE on New York Times articles
-- Shows how articles with similar topics cluster
-- Unlabeled → labeled using cluster insights
+#| echo: false
+#| fig-show: false
+
+import matplotlib.pyplot as plt
+from sklearn.datasets import make_blobs
+from sklearn.decomposition import PCA
+
+# Generate high-dimensional data
+X, _ = make_blobs(
+    n_samples=400,
+    centers=4,
+    n_features=5,
+    cluster_std=1.5,
+    random_state=42
+)
+
+# PCA projection to 2D
+pca = PCA(n_components=2)
+X_pca = pca.fit_transform(X)
+
+# Create side-by-side plots
+fig, axes = plt.subplots(1, 2, figsize=(10, 4))
+
+# Left: raw first two features
+axes[0].scatter(X[:, 0], X[:, 1], s=20)
+axes[0].set_title("Raw Feature Space")
+axes[0].set_xlabel("Feature 1")
+axes[0].set_ylabel("Feature 2")
+
+# Right: PCA projection
+axes[1].scatter(X_pca[:, 0], X_pca[:, 1], s=20)
+axes[1].set_title("After Dimensionality Reduction (PCA)")
+axes[1].set_xlabel("PC 1")
+axes[1].set_ylabel("PC 2")
+
+plt.tight_layout()
+plt.savefig("images/visualizing_structure.png", dpi=200, bbox_inches="tight")
+plt.close()
+
+
+
+```
+
+## Visualizing Structure
+
+::: columns
+::: {.column width="60%"}
+![](images/visualizing_structure.png){width=100%}
+:::
+
+::: {.column width="40%"}
+- Project high-dimensional data into 2D or 3D
+- Reveal clusters, gradients, or outliers
+- See structure that was previously hidden
+:::
+:::
+
+**These visualizations guide interpretation.**
+
 
 ---
 
-## 🤔 Common Pitfalls
+## Common Dimensionality Reduction Methods
 
-- Overinterpreting noisy clusters
-- Using clustering when not appropriate
-- Forgetting to scale your data!
-- Assuming structure where none exists
+Some widely used techniques include:
+
+- **PCA (Principal Component Analysis)**  
+  Linear, variance-based, interpretable
+
+- **t-SNE**  
+  Nonlinear, good for visualization
+
+- **UMAP**  
+  Nonlinear, preserves local and global structure
 
 ---
+
+
+## PCA: A Conceptual View
+
+Principal Component Analysis:
+
+- Finds directions of maximum variation
+- Creates new variables as combinations of original features
+- Orders components by how much variance they explain
+
+PCA is about representation, not prediction.
+
+
+---
+
+## Choosing a Dimensionality Reduction Method
+
+The choice depends on:
+
+- Whether interpretability matters
+- Whether the goal is visualization or preprocessing
+- Dataset size and structure
+
+Different methods serve different purposes.
+
+---
+
+## Important Limitations
+
+Dimensionality reduction:
+
+- Can distort distances or relationships
+- May hide meaningful variation
+- Does not guarantee interpretability
+
+Reduced dimensions are approximations, not truth.
+
+
+---
+
+## A Natural Question
+
+If we reduce dimensions and cluster data:
+
+- How do we know the results are meaningful?
+- How do we compare different choices?
+
+This leads to the challenge of evaluating unsupervised models.
+
+
+
+
+---
+
+## 🧪 The Evaluation Challenge
+
+In supervised learning:
+
+- We compare predictions to known labels
+- Accuracy and error guide model choice
+
+In unsupervised learning:
+
+- There is **no ground truth**
+- Evaluation is fundamentally harder
+
+
+---
+
+## Why There Is No Accuracy Score
+
+Unsupervised models do not predict outcomes.
+
+Instead, they:
+
+- Propose structure
+- Suggest groupings
+- Offer representations
+
+The question becomes:  
+**Is this structure useful?**
+
+
+---
+
+
+## What Do We Evaluate Instead?
+
+In practice, we evaluate:
+
+- **Internal consistency**
+- **Separation between groups**
+- **Stability across runs**
+- **Interpretability**
+- **Usefulness for downstream tasks**
+
+
+---
+
+## Internal Evaluation Metrics
+
+Some common quantitative measures include:
+
+- **Silhouette Score**  
+  Measures how well points fit within their cluster
+
+- **Davies–Bouldin Index**  
+  Measures cluster compactness and separation
+
+These metrics compare structure *relative to itself*.
+
+---
+
+## Visual Evaluation( add pictures)
+
+Visualization is often essential:
+
+- PCA, t-SNE, or UMAP plots
+- Helps reveal overlap or separation
+- Highlights outliers and edge cases
+
+Visual checks complement quantitative metrics.
+
+
+---
+
+## Stability and Robustness
+
+A useful unsupervised model should:
+
+- Produce similar results under small changes
+- Be robust to noise or random initialization
+- Not depend on a single lucky run
+
+Unstable structure is often not meaningful.
+
+
+---
+
+## Domain Knowledge Matters
+
+Ultimately, evaluation often requires:
+
+- Subject-matter expertise
+- Plausible interpretations
+- Alignment with real-world understanding
+
+Good clusters make sense in context.
+
+---
+
+## An Important Reality
+
+In unsupervised learning:
+
+- Multiple solutions may be reasonable
+- Different methods may reveal different structure
+- The “best” model depends on the goal
+
+Evaluation is comparative, not absolute.
+
+---
+
+## What Do Practitioners Do?
+
+In practice, data scientists often:
+
+- Compare multiple methods
+- Test on synthetic or known datasets
+- Examine tradeoffs between approaches
+
+This leads naturally to benchmarking and examples.
+
+
+---
+
+
+## 🔬 Why Benchmark Unsupervised Methods?
+
+Because there is no ground truth:
+
+- We rarely trust a single method
+- Different algorithms reveal different structure
+- Results must be compared, not accepted at face value
+
+Benchmarking helps us build confidence.
+
+---
+
+## What Does Benchmarking Mean?
+
+In practice, benchmarking involves:
+
+- Applying multiple methods to the same data
+- Comparing their behavior and outputs
+- Evaluating tradeoffs rather than winners
+
+The goal is insight, not optimization.
+
+---
+
+## How Do We Compare Methods?
+
+Common criteria include:
+
+- **Interpretability**
+- **Stability across runs**
+- **Sensitivity to noise**
+- **Computational cost**
+- **Scalability to large datasets**
+
+---
+
+## Using Synthetic Data
+
+Synthetic datasets are often used to:
+
+- Test algorithms under known structure
+- Understand strengths and weaknesses
+- Control noise, overlap, and dimensionality
+
+They provide a controlled testing environment.
+
+---
+
+## Why Controlled Experiments Help
+
+With synthetic data, we can:
+
+- Know how many clusters exist
+- Adjust how separable they are
+- Introduce noise or outliers deliberately
+
+This helps explain *why* methods behave differently.
+
+
+---
+
+## An Important Takeaway
+
+In unsupervised learning:
+
+- Different methods answer different questions
+- One method may work well in one setting and fail in another
+- Results must be interpreted in context
+
+There is no universally best algorithm.
+
+
+---
+
+## How Practitioners Make Decisions
+
+In real projects, data scientists often:
+
+- Try several methods
+- Compare visual and quantitative results
+- Choose the method that best supports the goal
+
+Judgment plays a central role.
+
+---
+
+## Bringing It All Together
+
+To make these ideas concrete, we’ll now look at:
+
+- A simple synthetic dataset
+- One clustering method
+- Basic evaluation and interpretation
+
+This example ties together clustering, reduction, and evaluation.
+
+---
+
+## Step 1: The Data
+
+We start with a synthetic dataset:
+
+- No labels provided to the algorithm
+- A small number of features
+- Some underlying structure (unknown to the model)
+
+This mirrors many real exploratory settings.
+
+
+```{python}
+#| echo: false
+
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.datasets import make_blobs
+
+```
+
+```{python}
+
+#| echo: true
+
+# We are going to create a synthetic dataset with 300 samples
+
+X, _ = make_blobs(
+    n_samples=300,
+    centers=4,
+    cluster_std=1.0,
+    random_state=4915
+)
+
+
+```
+
+---
+
+## Step 2: Visualizing the Data
+
+Before clustering, we explore the data visually.
+
+```{python}
+#| echo: true
+#| output-location: slide
+
+
+
+plt.scatter(X[:, 0], X[:, 1], s=30)
+plt.title("Unlabeled Data")
+plt.xlabel("Feature 1")
+plt.ylabel("Feature 2")
+plt.show()
+
+
+```
+
+
+## Step 3: Applying Clustering
+
+We now apply a simple clustering method: **K-Means**.
+
+We must choose the number of clusters, $k$.
+
+```{python}
+#| echo: true
+
+from sklearn.cluster import KMeans
+
+kmeans = KMeans(n_clusters=4, random_state=42)
+labels = kmeans.fit_predict(X)
+
+```
+
+## Step 4: Interpreting the Result
+
+We now visualize the cluster assignments.
+
+---
+
+```{python}
+#| echo: true
+#| output-location: slide
+
+plt.scatter(X[:, 0], X[:, 1], c=labels, s=30)
+plt.title("K-Means Clustering Result")
+plt.xlabel("Feature 1")
+plt.ylabel("Feature 2")
+plt.show()
+
+
+```
+
+---
+
+## Step 5: Evaluating the Structure
+
+Since there are no labels, we use an internal metric.
+
+- Silhouette score ranges from -1 to 1
+- Higher values indicate better separation
+- This score reflects structure, not truth
+
+---
+
+```{python}
+#| echo: true
+#| output-location: slide
+
+
+from sklearn.metrics import silhouette_score
+
+score = silhouette_score(X, labels)
+score
+
+
+```
+
+
+## What Did This Example Show?
+
+This example illustrates that:
+
+- Structure can emerge without labels
+- Results depend on modeling choices
+- Evaluation is indirect and contextual
+- Interpretation still matters
+
+---
+
+## Important Limitations
+
+This example was:
+
+- Low-dimensional
+- Clean and well-separated
+- Designed for clarity
+
+Real-world data is noisier, higher-dimensional, and messier.
+
+---
+
+## Why This Still Matters
+
+Despite its simplicity, this example reflects:
+
+- How unsupervised learning is used in practice
+- How exploration precedes modeling
+- Why judgment is essential in data science
+
+---
+
+## ⚠️ Common Pitfalls in Unsupervised Learning
+
+Some common mistakes include:
+
+- Overinterpreting noisy or unstable clusters
+- Forgetting to scale or preprocess data
+- Assuming structure exists when it may not
+- Treating unsupervised results as “ground truth”
+
+---
+
+
+## What Unsupervised Learning Is Not
+
+Unsupervised learning is **not**:
+
+- A way to magically discover truth
+- Guaranteed to find meaningful structure
+- A replacement for domain knowledge
+
+It is a tool for exploration and insight.
+
+---
+
+## 🧠 Key Takeaways
+
+- Unsupervised learning works without labels
+- It helps us understand data before modeling
+- Evaluation is indirect and judgment-based
+- Different methods reveal different structure
+
+---
+
+## Why This Matters in Practice
+
+In real data science work:
+
+- Exploration comes before prediction
+- Structure must be discovered, not assumed
+- Unsupervised learning guides downstream decisions
+
+It is often the foundation of serious analysis.
+
 
 ## 💬 Questions?
 
-- What part of this was surprising?
-- Which method do you want to try first?
-- How might this connect to your project?
+- Thank you for listening ot my presentation
+
+- I hope this topic primer can help impact your future project
 
 ---
 
@@ -192,6 +851,3 @@ You could use unsupervised learning to:
 You can find this presentation on GitHub:  
 🔗 `github.com/lukeroy007/stat4915`
 
-Happy clustering 😄
-
-testing 123456
