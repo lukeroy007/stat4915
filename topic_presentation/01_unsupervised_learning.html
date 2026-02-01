@@ -240,7 +240,7 @@ Luke Roy
 <li><a href="#/why-there-is-no-accuracy-score" id="/toc-why-there-is-no-accuracy-score">Why There Is No Accuracy Score</a></li>
 <li><a href="#/what-do-we-evaluate-instead" id="/toc-what-do-we-evaluate-instead">What Do We Evaluate Instead?</a></li>
 <li><a href="#/internal-evaluation-metrics" id="/toc-internal-evaluation-metrics">Internal Evaluation Metrics</a></li>
-<li><a href="#/visual-evaluation-add-pictures" id="/toc-visual-evaluation-add-pictures">Visual Evaluation( add pictures)</a></li>
+<li><a href="#/visual-evaluation" id="/toc-visual-evaluation">Visual Evaluation</a></li>
 <li><a href="#/stability-and-robustness" id="/toc-stability-and-robustness">Stability and Robustness</a></li>
 <li><a href="#/domain-knowledge-matters" id="/toc-domain-knowledge-matters">Domain Knowledge Matters</a></li>
 <li><a href="#/an-important-reality" id="/toc-an-important-reality">An Important Reality</a></li>
@@ -516,7 +516,6 @@ Nonlinear, preserves local and global structure</p></li>
 <li>May hide meaningful variation</li>
 <li>Does not guarantee interpretability</li>
 </ul>
-<p>Reduced dimensions are approximations, not truth.</p>
 </section>
 <section id="a-natural-question" class="slide level2">
 <h2>A Natural Question</h2>
@@ -536,7 +535,7 @@ Nonlinear, preserves local and global structure</p></li>
 </ul>
 <p>In unsupervised learning:</p>
 <ul>
-<li>There is <strong>no ground truth</strong></li>
+<li>There is <strong>no simple scoring method</strong></li>
 <li>Evaluation is fundamentally harder</li>
 </ul>
 </section>
@@ -545,12 +544,11 @@ Nonlinear, preserves local and global structure</p></li>
 <p>Unsupervised models do not predict outcomes.</p>
 <p>Instead, they:</p>
 <ul>
-<li>Propose structure</li>
-<li>Suggest groupings</li>
+<li>Elucidate structure</li>
+<li>Identify groupings</li>
 <li>Offer representations</li>
 </ul>
-<p>The question becomes:<br>
-<strong>Is this structure useful?</strong></p>
+<p><strong>Unsupervised models serve a different purpose</strong></p>
 </section>
 <section id="what-do-we-evaluate-instead" class="slide level2">
 <h2>What Do We Evaluate Instead?</h2>
@@ -574,15 +572,19 @@ Measures cluster compactness and separation</p></li>
 </ul>
 <p>These metrics compare structure <em>relative to itself</em>.</p>
 </section>
-<section id="visual-evaluation-add-pictures" class="slide level2">
-<h2>Visual Evaluation( add pictures)</h2>
-<p>Visualization is often essential:</p>
+<section id="visual-evaluation" class="slide level2">
+<h2>Visual Evaluation</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p><img data-src="images/visual_evaluation.png" style="width:100.0%"></p>
+</div><div class="column" style="width:40%;">
 <ul>
 <li>PCA, t-SNE, or UMAP plots</li>
-<li>Helps reveal overlap or separation</li>
-<li>Highlights outliers and edge cases</li>
+<li>Reveal overlap or separation</li>
+<li>Highlight outliers and edge cases</li>
 </ul>
-<p>Visual checks complement quantitative metrics.</p>
+</div></div>
+<p><strong>Visual checks complement quantitative metrics.</strong></p>
 </section>
 <section id="stability-and-robustness" class="slide level2">
 <h2>Stability and Robustness</h2>
@@ -714,7 +716,7 @@ Measures cluster compactness and separation</p></li>
 <li>Some underlying structure (unknown to the model)</li>
 </ul>
 <p>This mirrors many real exploratory settings.</p>
-<div id="4d1c7475" class="cell" data-execution_count="4">
+<div id="3d0d3f41" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href=""></a><span class="co"># We are going to create a synthetic dataset with 300 samples</span></span>
 <span id="cb1-2"><a href=""></a></span>
 <span id="cb1-3"><a href=""></a>X, _ <span class="op">=</span> make_blobs(</span>
@@ -728,7 +730,7 @@ Measures cluster compactness and separation</p></li>
 <section id="step-2-visualizing-the-data" class="slide level2">
 <h2>Step 2: Visualizing the Data</h2>
 <p>Before clustering, we explore the data visually.</p>
-<div id="ce916aee" class="cell" data-execution_count="5">
+<div id="611abf91" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href=""></a>plt.scatter(X[:, <span class="dv">0</span>], X[:, <span class="dv">1</span>], s<span class="op">=</span><span class="dv">30</span>)</span>
 <span id="cb2-2"><a href=""></a>plt.title(<span class="st">"Unlabeled Data"</span>)</span>
 <span id="cb2-3"><a href=""></a>plt.xlabel(<span class="st">"Feature 1"</span>)</span>
@@ -737,11 +739,11 @@ Measures cluster compactness and separation</p></li>
 </div>
 
 </section>
-<section id="step-2-visualizing-the-data-output" class="slide level2 output-location-slide"><h2>Step 2: Visualizing the Data</h2><div class="cell output-location-slide" data-execution_count="5">
+<section id="step-2-visualizing-the-data-output" class="slide level2 output-location-slide"><h2>Step 2: Visualizing the Data</h2><div class="cell output-location-slide" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="01_unsupervised_learning_files/figure-revealjs/cell-6-output-1.png" width="832" height="449"></p>
+<p><img data-src="01_unsupervised_learning_files/figure-revealjs/cell-7-output-1.png" width="832" height="449"></p>
 </figure>
 </div>
 </div>
@@ -749,7 +751,7 @@ Measures cluster compactness and separation</p></li>
 <h2>Step 3: Applying Clustering</h2>
 <p>We now apply a simple clustering method: <strong>K-Means</strong>.</p>
 <p>We must choose the number of clusters, <span class="math inline">\(k\)</span>.</p>
-<div id="25556d56" class="cell" data-execution_count="6">
+<div id="e4c241ed" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href=""></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> KMeans</span>
 <span id="cb3-2"><a href=""></a></span>
 <span id="cb3-3"><a href=""></a>kmeans <span class="op">=</span> KMeans(n_clusters<span class="op">=</span><span class="dv">4</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
@@ -762,7 +764,7 @@ Measures cluster compactness and separation</p></li>
 </section>
 <section class="slide level2">
 
-<div id="17cb3c32" class="cell" data-execution_count="7">
+<div id="4444dfd6" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href=""></a>plt.scatter(X[:, <span class="dv">0</span>], X[:, <span class="dv">1</span>], c<span class="op">=</span>labels, s<span class="op">=</span><span class="dv">30</span>)</span>
 <span id="cb4-2"><a href=""></a>plt.title(<span class="st">"K-Means Clustering Result"</span>)</span>
 <span id="cb4-3"><a href=""></a>plt.xlabel(<span class="st">"Feature 1"</span>)</span>
@@ -771,11 +773,11 @@ Measures cluster compactness and separation</p></li>
 </div>
 
 </section>
-<section id="" class="slide level2 output-location-slide"><div class="cell output-location-slide" data-execution_count="7">
+<section id="" class="slide level2 output-location-slide"><div class="cell output-location-slide" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="01_unsupervised_learning_files/figure-revealjs/cell-8-output-1.png" width="832" height="449"></p>
+<p><img data-src="01_unsupervised_learning_files/figure-revealjs/cell-9-output-1.png" width="832" height="449"></p>
 </figure>
 </div>
 </div>
@@ -790,7 +792,7 @@ Measures cluster compactness and separation</p></li>
 </section>
 <section class="slide level2">
 
-<div id="fde2b823" class="cell" data-execution_count="8">
+<div id="dcd1a3ac" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href=""></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> silhouette_score</span>
 <span id="cb5-2"><a href=""></a></span>
 <span id="cb5-3"><a href=""></a>score <span class="op">=</span> silhouette_score(X, labels)</span>
@@ -798,8 +800,8 @@ Measures cluster compactness and separation</p></li>
 </div>
 
 </section>
-<section id="" class="slide level2 output-location-slide"><div class="cell output-location-slide" data-execution_count="8">
-<div class="cell-output cell-output-display" data-execution_count="8">
+<section id="" class="slide level2 output-location-slide"><div class="cell output-location-slide" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>np.float64(0.5080053973478434)</code></pre>
 </div>
 </div></section><section id="what-did-this-example-show" class="slide level2">

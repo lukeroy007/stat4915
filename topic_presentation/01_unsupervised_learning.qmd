@@ -402,8 +402,6 @@ Dimensionality reduction:
 - May hide meaningful variation
 - Does not guarantee interpretability
 
-Reduced dimensions are approximations, not truth.
-
 
 ---
 
@@ -430,7 +428,7 @@ In supervised learning:
 
 In unsupervised learning:
 
-- There is **no ground truth**
+- There is **no simple scoring method**
 - Evaluation is fundamentally harder
 
 
@@ -442,12 +440,11 @@ Unsupervised models do not predict outcomes.
 
 Instead, they:
 
-- Propose structure
-- Suggest groupings
+- Elucidate structure
+- Identify groupings
 - Offer representations
 
-The question becomes:  
-**Is this structure useful?**
+**Unsupervised models serve a different purpose**
 
 
 ---
@@ -480,15 +477,67 @@ These metrics compare structure *relative to itself*.
 
 ---
 
-## Visual Evaluation( add pictures)
+```{python}
+#| echo: false
+#| fig-show: false
 
-Visualization is often essential:
+import matplotlib.pyplot as plt
+from sklearn.datasets import make_blobs
+from sklearn.cluster import KMeans
+from sklearn.decomposition import PCA
+import numpy as np
 
+# Generate data with some overlap + an outlier
+X, _ = make_blobs(
+    n_samples=300,
+    centers=3,
+    cluster_std=1.8,
+    random_state=42
+)
+
+# Add an outlier
+outlier = np.array([[8, 8]])
+X = np.vstack([X, outlier])
+
+# Cluster
+kmeans = KMeans(n_clusters=3, random_state=42)
+labels = kmeans.fit_predict(X)
+
+# PCA for visualization
+pca = PCA(n_components=2)
+X_pca = pca.fit_transform(X)
+
+# Plot
+plt.figure(figsize=(7, 5))
+plt.scatter(X_pca[:, 0], X_pca[:, 1], c=labels, s=30)
+plt.scatter(
+    X_pca[-1, 0], X_pca[-1, 1],
+    edgecolor="black", facecolor="none", s=120, linewidth=2
+)
+
+plt.title("Visual Evaluation of Clustering (PCA Projection)")
+plt.xlabel("PC 1")
+plt.ylabel("PC 2")
+
+plt.savefig("images/visual_evaluation.png", dpi=200, bbox_inches="tight")
+plt.close()
+```
+
+## Visual Evaluation
+
+::: columns
+::: {.column width="60%"}
+![](images/visual_evaluation.png){width=100%}
+:::
+
+::: {.column width="40%"}
 - PCA, t-SNE, or UMAP plots
-- Helps reveal overlap or separation
-- Highlights outliers and edge cases
+- Reveal overlap or separation
+- Highlight outliers and edge cases
+:::
+:::
 
-Visual checks complement quantitative metrics.
+**Visual checks complement quantitative metrics.**
 
 
 ---
@@ -499,7 +548,7 @@ A useful unsupervised model should:
 
 - Produce similar results under small changes
 - Be robust to noise or random initialization
-- Not depend on a single lucky run
+- Not dependent on a single lucky run
 
 Unstable structure is often not meaningful.
 
@@ -526,7 +575,6 @@ In unsupervised learning:
 - Different methods may reveal different structure
 - The “best” model depends on the goal
 
-Evaluation is comparative, not absolute.
 
 ---
 
@@ -538,98 +586,8 @@ In practice, data scientists often:
 - Test on synthetic or known datasets
 - Examine tradeoffs between approaches
 
-This leads naturally to benchmarking and examples.
-
 
 ---
-
-
-## 🔬 Why Benchmark Unsupervised Methods?
-
-Because there is no ground truth:
-
-- We rarely trust a single method
-- Different algorithms reveal different structure
-- Results must be compared, not accepted at face value
-
-Benchmarking helps us build confidence.
-
----
-
-## What Does Benchmarking Mean?
-
-In practice, benchmarking involves:
-
-- Applying multiple methods to the same data
-- Comparing their behavior and outputs
-- Evaluating tradeoffs rather than winners
-
-The goal is insight, not optimization.
-
----
-
-## How Do We Compare Methods?
-
-Common criteria include:
-
-- **Interpretability**
-- **Stability across runs**
-- **Sensitivity to noise**
-- **Computational cost**
-- **Scalability to large datasets**
-
----
-
-## Using Synthetic Data
-
-Synthetic datasets are often used to:
-
-- Test algorithms under known structure
-- Understand strengths and weaknesses
-- Control noise, overlap, and dimensionality
-
-They provide a controlled testing environment.
-
----
-
-## Why Controlled Experiments Help
-
-With synthetic data, we can:
-
-- Know how many clusters exist
-- Adjust how separable they are
-- Introduce noise or outliers deliberately
-
-This helps explain *why* methods behave differently.
-
-
----
-
-## An Important Takeaway
-
-In unsupervised learning:
-
-- Different methods answer different questions
-- One method may work well in one setting and fail in another
-- Results must be interpreted in context
-
-There is no universally best algorithm.
-
-
----
-
-## How Practitioners Make Decisions
-
-In real projects, data scientists often:
-
-- Try several methods
-- Compare visual and quantitative results
-- Choose the method that best supports the goal
-
-Judgment plays a central role.
-
----
-
 ## Bringing It All Together
 
 To make these ideas concrete, we’ll now look at:
@@ -782,41 +740,10 @@ This example was:
 
 Real-world data is noisier, higher-dimensional, and messier.
 
----
 
-## Why This Still Matters
-
-Despite its simplicity, this example reflects:
-
-- How unsupervised learning is used in practice
-- How exploration precedes modeling
-- Why judgment is essential in data science
 
 ---
 
-## ⚠️ Common Pitfalls in Unsupervised Learning
-
-Some common mistakes include:
-
-- Overinterpreting noisy or unstable clusters
-- Forgetting to scale or preprocess data
-- Assuming structure exists when it may not
-- Treating unsupervised results as “ground truth”
-
----
-
-
-## What Unsupervised Learning Is Not
-
-Unsupervised learning is **not**:
-
-- A way to magically discover truth
-- Guaranteed to find meaningful structure
-- A replacement for domain knowledge
-
-It is a tool for exploration and insight.
-
----
 
 ## 🧠 Key Takeaways
 
@@ -827,9 +754,8 @@ It is a tool for exploration and insight.
 
 ---
 
-## Why This Matters in Practice
 
-In real data science work:
+## In real data science work...
 
 - Exploration comes before prediction
 - Structure must be discovered, not assumed
@@ -838,7 +764,7 @@ In real data science work:
 It is often the foundation of serious analysis.
 
 
-## 💬 Questions?
+## 🙏 Thanks!
 
 - Thank you for listening ot my presentation
 
@@ -846,7 +772,9 @@ It is often the foundation of serious analysis.
 
 ---
 
-## 🙏 Thanks!
+## Questions?
+
+---
 
 You can find this presentation on GitHub:  
 🔗 `github.com/lukeroy007/stat4915`
