@@ -5,13 +5,14 @@ format:
   revealjs:
     theme: solarized
     slide-number: true
-    toc: true
+    toc: false
     transition: fade
     chalkboard: true
      
 execute: 
   echo: true
   warning: false
+
 ---
 
 ## 🎬 Welcome
@@ -138,6 +139,7 @@ Clustering is the task of:
 - Maximizing similarity *within* groups
 - Minimizing similarity *between* groups
 
+---
 
 ## Why is Clustering Useful?
 
@@ -232,7 +234,7 @@ Different datasets have different structures:
 
 No single clustering algorithm works best in all cases.
 
-
+---
 
 ## How Do We Choose a Clustering Method?
 
@@ -245,7 +247,7 @@ The choice depends on:
 
 Clustering is as much art as science.
 
-
+---
 
 ## An Important Caveat
 
@@ -588,6 +590,7 @@ In practice, data scientists often:
 
 
 ---
+
 ## Bringing It All Together
 
 To make these ideas concrete, we’ll now look at:
@@ -610,6 +613,7 @@ We start with a synthetic dataset:
 
 This mirrors many real exploratory settings.
 
+---
 
 ```{python}
 #| echo: false
@@ -636,11 +640,13 @@ X, _ = make_blobs(
 
 ```
 
----
+
 
 ## Step 2: Visualizing the Data
 
 Before clustering, we explore the data visually.
+
+---
 
 ```{python}
 #| echo: true
@@ -674,6 +680,7 @@ labels = kmeans.fit_predict(X)
 
 ```
 
+---
 ## Step 4: Interpreting the Result
 
 We now visualize the cluster assignments.
@@ -763,6 +770,7 @@ Real-world data is noisier, higher-dimensional, and messier.
 
 It is often the foundation of serious analysis.
 
+---
 
 ## 🙏 Thanks!
 
