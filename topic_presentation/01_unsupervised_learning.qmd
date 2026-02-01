@@ -15,7 +15,7 @@ execute:
 
 ---
 
-# 🎬 Welcome
+## 🎬 Welcome
 
 ### Unsupervised Learning: A Data Science Lens  
 **Luke Roy**  
@@ -131,7 +131,7 @@ In the rest of this talk, we’ll focus on:
 
 ---
 
-# 🧰 Clustering: The Core Idea
+## 🧰 Clustering: The Core Idea
 
 Clustering is the task of:
 
@@ -263,7 +263,7 @@ Clustering reveals structure but isn't automatic proof of relationships
 
 ---
 
-# 📉 Dimensionality Reduction
+## 📉 Dimensionality Reduction
 
 Modern datasets often have:
 

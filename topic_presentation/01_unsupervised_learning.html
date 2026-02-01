@@ -307,13 +307,13 @@ Gene expression and cell-type discovery</p></li>
 </section>
 <section id="intuition-behind-clustering" class="slide level2">
 <h2>🧠 Intuition Behind Clustering</h2>
-<p>At a high level, clustering asks:</p>
+<p>At a high level, clustering tells us:</p>
 <ul>
 <li>Which observations look alike?</li>
 <li>Are there natural groupings in the data?</li>
 <li>Do these groupings tell a useful story?</li>
 </ul>
-<p>Clustering is exploratory, not definitive.</p>
+<p>Clustering is an exploratory process</p>
 </section>
 <section id="seeing-clusters" class="slide level2">
 <h2>Seeing Clusters</h2>
@@ -362,7 +362,6 @@ Probabilistic clusters with uncertainty</p></li>
 <li>Interpretability needs</li>
 <li>Computational constraints</li>
 </ul>
-<p>Clustering is as much art as science.</p>
 </section>
 <section id="an-important-caveat" class="slide level2">
 <h2>An Important Caveat</h2>
@@ -372,7 +371,7 @@ Probabilistic clusters with uncertainty</p></li>
 <li>Stable</li>
 <li>Meaningful</li>
 </ul>
-<p>Clustering reveals structure but isn’t automatic proof</p>
+<p>Clustering reveals structure but isn’t automatic proof of relationships</p>
 </section>
 <section id="dimensionality-reduction" class="slide level2">
 <h2>📉 Dimensionality Reduction</h2>
@@ -395,6 +394,28 @@ Probabilistic clusters with uncertainty</p></li>
 </ul>
 <p>It is often used <em>before</em> or <em>alongside</em> clustering.</p>
 </section>
+<section id="common-dimensionality-reduction-methods" class="slide level2">
+<h2>Common Dimensionality Reduction Methods</h2>
+<p>Some widely used techniques include:</p>
+<ul>
+<li><p><strong>PCA (Principal Component Analysis)</strong><br>
+Linear, variance-based, interpretable</p></li>
+<li><p><strong>t-SNE</strong><br>
+Nonlinear, good for visualization</p></li>
+<li><p><strong>UMAP</strong><br>
+Nonlinear, preserves local and global structure</p></li>
+</ul>
+</section>
+<section id="choosing-a-dimensionality-reduction-method" class="slide level2">
+<h2>Choosing a Dimensionality Reduction Method</h2>
+<p>The choice depends on:</p>
+<ul>
+<li>Whether interpretability matters</li>
+<li>Whether the goal is visualization or preprocessing</li>
+<li>Dataset size and structure</li>
+</ul>
+<p>Different methods serve different purposes.</p>
+</section>
 <section id="visualizing-structure" class="slide level2">
 <h2>Visualizing Structure</h2>
 <div class="columns">
@@ -409,38 +430,6 @@ Probabilistic clusters with uncertainty</p></li>
 </div></div>
 <p><strong>These visualizations guide interpretation.</strong></p>
 </section>
-<section id="common-dimensionality-reduction-methods" class="slide level2">
-<h2>Common Dimensionality Reduction Methods</h2>
-<p>Some widely used techniques include:</p>
-<ul>
-<li><p><strong>PCA (Principal Component Analysis)</strong><br>
-Linear, variance-based, interpretable</p></li>
-<li><p><strong>t-SNE</strong><br>
-Nonlinear, good for visualization</p></li>
-<li><p><strong>UMAP</strong><br>
-Nonlinear, preserves local and global structure</p></li>
-</ul>
-</section>
-<section id="pca-a-conceptual-view" class="slide level2">
-<h2>PCA: A Conceptual View</h2>
-<p>Principal Component Analysis:</p>
-<ul>
-<li>Finds directions of maximum variation</li>
-<li>Creates new variables as combinations of original features</li>
-<li>Orders components by how much variance they explain</li>
-</ul>
-<p>PCA is about representation, not prediction.</p>
-</section>
-<section id="choosing-a-dimensionality-reduction-method" class="slide level2">
-<h2>Choosing a Dimensionality Reduction Method</h2>
-<p>The choice depends on:</p>
-<ul>
-<li>Whether interpretability matters</li>
-<li>Whether the goal is visualization or preprocessing</li>
-<li>Dataset size and structure</li>
-</ul>
-<p>Different methods serve different purposes.</p>
-</section>
 <section id="important-limitations" class="slide level2">
 <h2>Important Limitations</h2>
 <p>Dimensionality reduction:</p>
@@ -450,8 +439,8 @@ Nonlinear, preserves local and global structure</p></li>
 <li>Does not guarantee interpretability</li>
 </ul>
 </section>
-<section id="a-natural-question" class="slide level2">
-<h2>A Natural Question</h2>
+<section id="how-to-evaluate" class="slide level2">
+<h2>How to Evaluate?</h2>
 <p>If we reduce dimensions and cluster data:</p>
 <ul>
 <li>How do we know the results are meaningful?</li>
@@ -539,8 +528,8 @@ Measures cluster compactness and separation</p></li>
 </ul>
 <p>Good clusters make sense in context.</p>
 </section>
-<section id="an-important-reality" class="slide level2">
-<h2>An Important Reality</h2>
+<section id="no-best-fit" class="slide level2">
+<h2>No “Best Fit”</h2>
 <p>In unsupervised learning:</p>
 <ul>
 <li>Multiple solutions may be reasonable</li>
@@ -579,7 +568,7 @@ Measures cluster compactness and separation</p></li>
 </section>
 <section class="slide level2">
 
-<div id="074ee472" class="cell" data-execution_count="5">
+<div id="c72cc129" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href=""></a><span class="co"># We are going to create a synthetic dataset with 300 samples</span></span>
 <span id="cb1-2"><a href=""></a></span>
 <span id="cb1-3"><a href=""></a>X, _ <span class="op">=</span> make_blobs(</span>
@@ -596,7 +585,7 @@ Measures cluster compactness and separation</p></li>
 </section>
 <section class="slide level2">
 
-<div id="7a40b4dc" class="cell" data-execution_count="6">
+<div id="a28392f5" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href=""></a>plt.scatter(X[:, <span class="dv">0</span>], X[:, <span class="dv">1</span>], s<span class="op">=</span><span class="dv">30</span>)</span>
 <span id="cb2-2"><a href=""></a>plt.title(<span class="st">"Unlabeled Data"</span>)</span>
 <span id="cb2-3"><a href=""></a>plt.xlabel(<span class="st">"Feature 1"</span>)</span>
@@ -617,10 +606,10 @@ Measures cluster compactness and separation</p></li>
 <h2>Step 3: Applying Clustering</h2>
 <p>We now apply a simple clustering method: <strong>K-Means</strong>.</p>
 <p>We must choose the number of clusters, <span class="math inline">\(k\)</span>.</p>
-<div id="77256444" class="cell" data-execution_count="7">
+<div id="441a1358" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href=""></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> KMeans</span>
 <span id="cb3-2"><a href=""></a></span>
-<span id="cb3-3"><a href=""></a>kmeans <span class="op">=</span> KMeans(n_clusters<span class="op">=</span><span class="dv">4</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb3-3"><a href=""></a>kmeans <span class="op">=</span> KMeans(n_clusters<span class="op">=</span><span class="dv">4</span>, random_state<span class="op">=</span><span class="dv">4915</span>)</span>
 <span id="cb3-4"><a href=""></a>labels <span class="op">=</span> kmeans.fit_predict(X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -630,7 +619,7 @@ Measures cluster compactness and separation</p></li>
 </section>
 <section class="slide level2">
 
-<div id="96fa579d" class="cell" data-execution_count="8">
+<div id="87033c9d" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href=""></a>plt.scatter(X[:, <span class="dv">0</span>], X[:, <span class="dv">1</span>], c<span class="op">=</span>labels, s<span class="op">=</span><span class="dv">30</span>)</span>
 <span id="cb4-2"><a href=""></a>plt.title(<span class="st">"K-Means Clustering Result"</span>)</span>
 <span id="cb4-3"><a href=""></a>plt.xlabel(<span class="st">"Feature 1"</span>)</span>
@@ -658,7 +647,7 @@ Measures cluster compactness and separation</p></li>
 </section>
 <section class="slide level2">
 
-<div id="ceb34e07" class="cell" data-execution_count="9">
+<div id="6f24a4d9" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href=""></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> silhouette_score</span>
 <span id="cb5-2"><a href=""></a></span>
 <span id="cb5-3"><a href=""></a>score <span class="op">=</span> silhouette_score(X, labels)</span>
@@ -667,8 +656,8 @@ Measures cluster compactness and separation</p></li>
 
 </section>
 <section id="" class="slide level2 output-location-slide"><div class="cell output-location-slide" data-execution_count="9">
-<div class="cell-output cell-output-display" data-execution_count="18">
-<pre><code>np.float64(0.5080053973478434)</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>np.float64(0.6037566436097677)</code></pre>
 </div>
 </div></section><section id="what-did-this-example-show" class="slide level2">
 <h2>What Did This Example Show?</h2>
