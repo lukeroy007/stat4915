@@ -15,7 +15,7 @@ execute:
 
 ---
 
-## 🎬 Welcome
+# 🎬 Welcome
 
 ### Unsupervised Learning: A Data Science Lens  
 **Luke Roy**  
@@ -131,7 +131,7 @@ In the rest of this talk, we’ll focus on:
 
 ---
 
-## 🧰 Clustering: The Core Idea
+# 🧰 Clustering: The Core Idea
 
 Clustering is the task of:
 
@@ -150,13 +150,13 @@ Clustering is the task of:
 
 ## 🧠 Intuition Behind Clustering
 
-At a high level, clustering asks:
+At a high level, clustering tells us:
 
 - Which observations look alike?
 - Are there natural groupings in the data?
 - Do these groupings tell a useful story?
 
-Clustering is exploratory, not definitive.
+Clustering is an exploratory process
 
 ---
 
@@ -245,7 +245,6 @@ The choice depends on:
 - Interpretability needs
 - Computational constraints
 
-Clustering is as much art as science.
 
 ---
 
@@ -257,14 +256,14 @@ Clusters are not guaranteed to be:
 - Stable
 - Meaningful
 
-Clustering reveals structure but isn't automatic proof
+Clustering reveals structure but isn't automatic proof of relationships
 
 
 
 
 ---
 
-## 📉 Dimensionality Reduction
+# 📉 Dimensionality Reduction
 
 Modern datasets often have:
 
@@ -288,6 +287,35 @@ Dimensionality reduction helps us:
 - Make patterns easier to interpret
 
 It is often used *before* or *alongside* clustering.
+
+---
+
+
+## Common Dimensionality Reduction Methods
+
+Some widely used techniques include:
+
+- **PCA (Principal Component Analysis)**  
+  Linear, variance-based, interpretable
+
+- **t-SNE**  
+  Nonlinear, good for visualization
+
+- **UMAP**  
+  Nonlinear, preserves local and global structure
+
+
+---
+
+## Choosing a Dimensionality Reduction Method
+
+The choice depends on:
+
+- Whether interpretability matters
+- Whether the goal is visualization or preprocessing
+- Dataset size and structure
+
+Different methods serve different purposes.
 
 ---
 
@@ -352,48 +380,6 @@ plt.close()
 
 **These visualizations guide interpretation.**
 
-
----
-
-## Common Dimensionality Reduction Methods
-
-Some widely used techniques include:
-
-- **PCA (Principal Component Analysis)**  
-  Linear, variance-based, interpretable
-
-- **t-SNE**  
-  Nonlinear, good for visualization
-
-- **UMAP**  
-  Nonlinear, preserves local and global structure
-
----
-
-
-## PCA: A Conceptual View
-
-Principal Component Analysis:
-
-- Finds directions of maximum variation
-- Creates new variables as combinations of original features
-- Orders components by how much variance they explain
-
-PCA is about representation, not prediction.
-
-
----
-
-## Choosing a Dimensionality Reduction Method
-
-The choice depends on:
-
-- Whether interpretability matters
-- Whether the goal is visualization or preprocessing
-- Dataset size and structure
-
-Different methods serve different purposes.
-
 ---
 
 ## Important Limitations
@@ -407,7 +393,7 @@ Dimensionality reduction:
 
 ---
 
-## A Natural Question
+## How to Evaluate?
 
 If we reduce dimensions and cluster data:
 
@@ -569,7 +555,7 @@ Good clusters make sense in context.
 
 ---
 
-## An Important Reality
+## No "Best Fit"
 
 In unsupervised learning:
 
@@ -675,12 +661,12 @@ We must choose the number of clusters, $k$.
 
 from sklearn.cluster import KMeans
 
-kmeans = KMeans(n_clusters=4, random_state=42)
+kmeans = KMeans(n_clusters=4, random_state=4915)
 labels = kmeans.fit_predict(X)
 
 ```
 
----
+
 ## Step 4: Interpreting the Result
 
 We now visualize the cluster assignments.
